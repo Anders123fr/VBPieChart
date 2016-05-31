@@ -206,6 +206,8 @@ typedef CGPoint (^VBLabelBlock)(CALayer*layer, NSInteger index);
  */
 - (void) setChartValues:(NSArray *)chartValues animation:(BOOL)animation duration:(double)duration options:(VBPieChartAnimationOptions)options;
 
+- (void) highlightLargestPiece;
+
 @end
 
 

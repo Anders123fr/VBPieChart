@@ -46,7 +46,8 @@
             [_chart setHoleRadiusPrecent:value];
             break;
     }
-    
+	
+	[_chart highlightLargestPiece];
 }
 
 - (void) chartInit {

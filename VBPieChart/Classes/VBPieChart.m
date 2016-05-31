@@ -387,6 +387,20 @@ static __inline__ CGFloat CGPointDistanceBetweenTwoPoints(CGPoint point1, CGPoin
 }
 
 
+- (void) highlightLargestPiece {
+	for (VBPiePiece *piece in _piecesArray) {
+		
+		[self togglePieceAccent:piece];
+
+		break;
+		
+		if (piece.data.value.doubleValue == 0.0) {
+		}
+
+	}
+}
+
+
 - (CALayer *)layerForTouch:(UITouch *)touch {
     CGPoint location = [touch locationInView:[touch view]];
     
@@ -429,13 +443,17 @@ static __inline__ CGFloat CGPointDistanceBetweenTwoPoints(CGPoint point1, CGPoin
     CGPoint point = [touch locationInView:self];
     if (CGPointDistanceBetweenTwoPoints(point, _touchBegan) < 5) {
         _hitLayer = (VBPiePiece*)[self layerForTouch:touch];
-        
-        if (_hitLayer.accentPrecent < FLT_EPSILON) {
-            [_hitLayer animateToAccent:_maxAccentPrecent];
-        } else {
-            [_hitLayer animateToAccent:0];
-        }
+		
+		[self togglePieceAccent:_hitLayer];
     }
+}
+
+- (void) togglePieceAccent:(VBPiePiece *)piece {
+	if (piece.accentPrecent < FLT_EPSILON) {
+		[piece animateToAccent:_maxAccentPrecent];
+	} else {
+		[piece animateToAccent:0];
+	}
 }
 
 @end
