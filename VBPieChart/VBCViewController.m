@@ -47,7 +47,6 @@
             break;
     }
 	
-	[_chart highlightLargestPiece];
 }
 
 - (void) chartInit {
@@ -99,6 +98,7 @@
                          @{@"name":@"stroke", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa], @"strokeColor":[UIColor whiteColor]}
                          ];
 
+
 }
 
 - (void)viewDidLoad {
@@ -134,6 +134,18 @@
     if (_chart.chartValues.count > 1) {
         [_chart setValue:@(100) pieceAtIndex:1];
     }
+	
+	
+	dispatch_after(dispatch_time(
+								 DISPATCH_TIME_NOW,
+								 (0.8 * NSEC_PER_SEC)
+								 ),
+				   dispatch_get_main_queue(), ^{
+					   [_chart highlightLargestPiece];
+					   
+				   });
+
+
 }
 
 - (IBAction) removeSecond:(id)sender {

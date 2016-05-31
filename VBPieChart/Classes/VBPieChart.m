@@ -386,17 +386,18 @@ static __inline__ CGFloat CGPointDistanceBetweenTwoPoints(CGPoint point1, CGPoin
     [self setChartValues:chartValues];
 }
 
-
+// Finds the largest piece in the chart and changes its accent
 - (void) highlightLargestPiece {
+	VBPiePiece *largestPiece = nil;
+	
 	for (VBPiePiece *piece in _piecesArray) {
-		
-		[self togglePieceAccent:piece];
-
-		break;
-		
-		if (piece.data.value.doubleValue == 0.0) {
+		if (largestPiece == nil || (largestPiece.data.value.doubleValue < piece.data.value.doubleValue)) {
+			largestPiece = piece;
 		}
-
+	}
+	
+	if (largestPiece != nil) {
+		[self togglePieceAccent:largestPiece];
 	}
 }
 
