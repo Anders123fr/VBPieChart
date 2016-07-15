@@ -135,6 +135,10 @@
         [_chart setValue:@(100) pieceAtIndex:1];
     }
 	
+}
+
+
+- (IBAction)highlight:(id)sender {
 	
 	dispatch_after(dispatch_time(
 								 DISPATCH_TIME_NOW,
@@ -144,9 +148,8 @@
 					   [_chart highlightLargestPiece];
 					   
 				   });
-
-
 }
+
 
 - (IBAction) removeSecond:(id)sender {
     if (_chart.chartValues.count > 1) {
