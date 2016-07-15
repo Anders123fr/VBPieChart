@@ -139,15 +139,6 @@
 
 
 - (IBAction)highlight:(id)sender {
-	
-	dispatch_after(dispatch_time(
-								 DISPATCH_TIME_NOW,
-								 (0.8 * NSEC_PER_SEC)
-								 ),
-				   dispatch_get_main_queue(), ^{
-					   [_chart highlightLargestPiece];
-					   
-				   });
 }
 
 
@@ -168,7 +159,7 @@
     NSError *error = nil;
     NSArray *chartValues = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     
-    [_chart setChartValues:chartValues animation:YES duration:0.5 options:VBPieChartAnimationFan];
+    [_chart setChartValues:chartValues animation:YES duration:0.5 options:VBPieChartAnimationFan highlightLargestPiece:false];
 }
 
 - (IBAction) insert:(id)sender {
@@ -224,23 +215,23 @@
 
 - (IBAction) growth:(id)sender {
     [_chart setHoleRadiusPrecent:0.5];
-    [_chart setChartValues:_chartValues animation:YES duration:1.0 options:VBPieChartAnimationGrowth];
+    [_chart setChartValues:_chartValues animation:YES duration:1.0 options:VBPieChartAnimationGrowth highlightLargestPiece:false];
 }
 
 - (IBAction) growthBackAll:(id)sender {
     [_chart setHoleRadiusPrecent:0.5];
-    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationGrowthBackAll | VBPieChartAnimationTimingEaseInOut];
+    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationGrowthBackAll | VBPieChartAnimationTimingEaseInOut highlightLargestPiece:false];
 }
 
 - (IBAction) growthBack:(id)sender {
     [_chart setHoleRadiusPrecent:0.5];
-    [_chart setChartValues:_chartValues animation:YES duration:1.0 options:VBPieChartAnimationGrowthBack];
+    [_chart setChartValues:_chartValues animation:YES duration:1.0 options:VBPieChartAnimationGrowthBack highlightLargestPiece:false];
 }
 
 
 - (IBAction) fan:(id)sender {
     [_chart setHoleRadiusPrecent:0.5];
-    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationFan];
+    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationFan highlightLargestPiece:false];
 }
 
 

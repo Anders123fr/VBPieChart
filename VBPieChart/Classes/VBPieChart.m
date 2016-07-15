@@ -376,14 +376,23 @@ static __inline__ CGFloat CGPointDistanceBetweenTwoPoints(CGPoint point1, CGPoin
 }
 
 - (void) setChartValues:(NSArray *)chartValues animation:(BOOL)animation options:(VBPieChartAnimationOptions)options {
-    [self setChartValues:chartValues animation:animation duration:0.6 options:options];
+    [self setChartValues:chartValues animation:animation duration:0.6 options:options highlightLargestPiece:false];
 }
 
-- (void) setChartValues:(NSArray *)chartValues animation:(BOOL)animation duration:(double)duration options:(VBPieChartAnimationOptions)options {
+- (void) setChartValues:(NSArray *)chartValues animation:(BOOL)animation duration:(double)duration options:(VBPieChartAnimationOptions)options highlightLargestPiece:(BOOL)highlightLargestPiece {
     _presentWithAnimation = animation;
     _animationOptions = options;
     _animationDuration = duration;
     [self setChartValues:chartValues];
+	
+	if (highlightLargestPiece) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+									 (duration * NSEC_PER_SEC)
+									 ),
+					   dispatch_get_main_queue(), ^{
+						   [self highlightLargestPiece];
+					   });
+	}
 }
 
 // Finds the largest piece in the chart and changes its accent
