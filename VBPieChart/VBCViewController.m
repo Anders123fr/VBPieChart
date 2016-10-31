@@ -231,7 +231,7 @@
 
 - (IBAction) fan:(id)sender {
     [_chart setHoleRadiusPrecent:0.5];
-    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationFan highlightLargestPiece:false];
+    [_chart setChartValues:_chartValues animation:YES duration:0.4 options:VBPieChartAnimationFan highlightLargestPiece:true];
 }
 
 
